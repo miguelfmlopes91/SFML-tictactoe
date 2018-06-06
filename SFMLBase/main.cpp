@@ -1,6 +1,9 @@
 #include "GameLoop.hpp"
+#include "DEFINITIONS.hpp"
 
 int main()
 {
-	Bardo::GameLoop(800, 600, "SFML Starter");
+	Bardo::GameLoop(SCREEN_WIDTH, SCREEN_HEIGHT, "BARDO GAME");
+
+	return EXIT_SUCCESS;
 }
