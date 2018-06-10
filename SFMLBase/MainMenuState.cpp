@@ -1,7 +1,7 @@
 #include "MainMenuState.hpp"
 #include <sstream>
 #include <iostream>
-#include "Definitions.hpp"
+#include "DEFINITIONS.hpp"
 
 
 
@@ -23,7 +23,7 @@ namespace Bardo {
 		this->_data->assets.LoadTexture("Play Button Outer", MAIN_MENU_PLAY_BUTTON_OUTER);
 		this->_data->assets.LoadTexture("Game Title", MAIN_MENU_TITLE_FILEPATH);
 
-		this->_background.setTexture(this->_data->assets.GetTexture("Backgroud"));
+		this->_background.setTexture(this->_data->assets.GetTexture("Background"));
 		this->_background.setTexture(this->_data->assets.GetTexture("Play Button"));
 		this->_background.setTexture(this->_data->assets.GetTexture("Play Button Outer"));
 		this->_background.setTexture(this->_data->assets.GetTexture("Game Title"));
