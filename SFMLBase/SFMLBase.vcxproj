@@ -23,6 +23,7 @@
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StatesMachine.cpp" />
   </ItemGroup>
@@ -31,6 +32,7 @@
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="GameLoop.hpp" />
     <ClInclude Include="InputsManager.hpp" />
+    <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StatesMachine.hpp" />

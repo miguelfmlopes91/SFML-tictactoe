@@ -2,7 +2,7 @@
 
 #include <sstream>
 #include "SplashState.hpp"
-//#include "MainMenuState.hpp"
+#include "MainMenuState.hpp"
 #include "DEFINITIONS.hpp"
 
 #include <iostream>
@@ -38,8 +38,8 @@ namespace Bardo
 	{
 		if (this->_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 		{
-			// Switch To Main Menu
-			//this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
+			//switch to the Main Menu after X time
+			this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
 		}
 	}
 
