@@ -24,16 +24,17 @@ namespace Bardo {
 		this->_data->assets.LoadTexture("Game Title", MAIN_MENU_TITLE_FILEPATH);
 
 		this->_background.setTexture(this->_data->assets.GetTexture("Background"));
-		this->_background.setTexture(this->_data->assets.GetTexture("Play Button"));
-		this->_background.setTexture(this->_data->assets.GetTexture("Play Button Outer"));
-		this->_background.setTexture(this->_data->assets.GetTexture("Game Title"));
+		this->_playButton.setTexture(this->_data->assets.GetTexture("Play Button"));
+		this->_playButtonOuter.setTexture(this->_data->assets.GetTexture("Play Button Outer"));
+		this->_title.setTexture(this->_data->assets.GetTexture("Game Title"));
 
-		this->_playButton.setPosition((SCREEN_WIDTH/2)-(this->_playButton.getGlobalBounds().width/2), 
+		this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), 
 			(SCREEN_HEIGHT / 2) - (this->_playButton.getGlobalBounds().height / 2));
-		this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2),
+		this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), 
 			(SCREEN_HEIGHT / 2) - (this->_playButtonOuter.getGlobalBounds().height / 2));
-		this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2),
-			(SCREEN_HEIGHT / 2) - (this->_title.getGlobalBounds().height *0.1));
+
+		this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), 
+			this->_title.getGlobalBounds().height * 0.1);
 
 	}
 
@@ -50,6 +51,7 @@ namespace Bardo {
 			if(this->_data->input.IsSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 			{
 				std::cout << "Go to Game Screen" << std::endl;
+				//this->_data->machine.AddState(StateRef(new GameState(_data)), true);
 			}
 		}
 	}
