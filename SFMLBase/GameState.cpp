@@ -3,6 +3,7 @@
 #include <iostream>
 #include "DEFINITIONS.hpp"
 #include "PauseState.hpp"
+#include "GameOverState.hpp"
 
 
 namespace Bardo {
@@ -41,6 +42,8 @@ namespace Bardo {
 			if (this->_data->input.IsSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 			{
 				this->_data->machine.AddState(StateRef(new PauseState(_data)),false);
+				//this->_data->machine.AddState(StateRef(new GameOverState(_data)), true);
+
 			}
 		}
 	}

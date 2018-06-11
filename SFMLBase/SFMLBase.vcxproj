@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="AssetsManager.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="GameLoop.hpp" />
+    <ClInclude Include="GameOverState.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputsManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
