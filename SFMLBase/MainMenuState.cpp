@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include "DEFINITIONS.hpp"
-
+#include "GameState.hpp"
 
 
 
@@ -51,7 +51,7 @@ namespace Bardo {
 			if(this->_data->input.IsSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 			{
 				std::cout << "Go to Game Screen" << std::endl;
-				//this->_data->machine.AddState(StateRef(new GameState(_data)), true);
+				this->_data->machine.AddState(StateRef(new GameState(_data)), true);
 			}
 		}
 	}
