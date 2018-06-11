@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include "DEFINITIONS.hpp"
-
+#include "PauseState.hpp"
 
 
 namespace Bardo {
@@ -40,7 +40,7 @@ namespace Bardo {
 			}
 			if (this->_data->input.IsSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 			{
-				std::cout << "Pausing the game" << std::endl;
+				this->_data->machine.AddState(StateRef(new PauseState(_data)),false);
 			}
 		}
 	}

@@ -25,6 +25,7 @@
     <ClCompile Include="InputsManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StatesMachine.cpp" />
   </ItemGroup>
@@ -35,6 +36,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputsManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
+    <ClInclude Include="PauseState.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StatesMachine.hpp" />
