@@ -20,6 +20,9 @@ namespace Bardo {
 		gameState = STATE_PLAYING;
 		turn = PLAYER_PIECE;
 
+		this->ai = new AI(turn, this->_data);
+
+
 		this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 		this->_data->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
 		this->_data->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
@@ -158,13 +161,6 @@ namespace Bardo {
 			{
 				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("X Piece"));
 				this->CheckPlayerHasWon(turn);
-				turn = AI_PIECE;
-			}
-			else if (AI_PIECE == turn)
-			{
-				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("O Piece"));
-				this->CheckPlayerHasWon(turn);
-				turn = PLAYER_PIECE;
 			}
 
 			_gridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
@@ -182,21 +178,21 @@ namespace Bardo {
 		Check3PiecesForMatch(0, 0, 1, 1, 2, 2, player);
 		Check3PiecesForMatch(0, 2, 1, 1, 2, 0, player);
 
-		//if (STATE_WON != gameState)
-		//{
-		//	gameState = STATE_AI_PLAYING;
+		if (STATE_WON != gameState)
+		{
+			gameState = STATE_AI_PLAYING;
 
-		//	ai->PlacePiece(&_gridArray, _gridPieces, &gameState);
+			ai->PlacePiece(&_gridArray, _gridPieces, &gameState);
 
-		//	Check3PiecesForMatch(0, 0, 1, 0, 2, 0, AI_PIECE);
-		//	Check3PiecesForMatch(0, 1, 1, 1, 2, 1, AI_PIECE);
-		//	Check3PiecesForMatch(0, 2, 1, 2, 2, 2, AI_PIECE);
-		//	Check3PiecesForMatch(0, 0, 0, 1, 0, 2, AI_PIECE);
-		//	Check3PiecesForMatch(1, 0, 1, 1, 1, 2, AI_PIECE);
-		//	Check3PiecesForMatch(2, 0, 2, 1, 2, 2, AI_PIECE);
-		//	Check3PiecesForMatch(0, 0, 1, 1, 2, 2, AI_PIECE);
-		//	Check3PiecesForMatch(0, 2, 1, 1, 2, 0, AI_PIECE);
-		//}
+			Check3PiecesForMatch(0, 0, 1, 0, 2, 0, AI_PIECE);
+			Check3PiecesForMatch(0, 1, 1, 1, 2, 1, AI_PIECE);
+			Check3PiecesForMatch(0, 2, 1, 2, 2, 2, AI_PIECE);
+			Check3PiecesForMatch(0, 0, 0, 1, 0, 2, AI_PIECE);
+			Check3PiecesForMatch(1, 0, 1, 1, 1, 2, AI_PIECE);
+			Check3PiecesForMatch(2, 0, 2, 1, 2, 2, AI_PIECE);
+			Check3PiecesForMatch(0, 0, 1, 1, 2, 2, AI_PIECE);
+			Check3PiecesForMatch(0, 2, 1, 1, 2, 0, AI_PIECE);
+		}
 
 		int emptyNum = 9;
 

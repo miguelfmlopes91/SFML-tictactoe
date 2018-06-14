@@ -3,6 +3,8 @@
 #include <SFML\Graphics.hpp>
 #include "State.hpp"
 #include "GameLoop.hpp"
+#include "AI.hpp"
+
 
 namespace Bardo {
 
@@ -38,6 +40,8 @@ namespace Bardo {
 
 		int turn;
 		int gameState;
+
+		AI *ai;
 	};
 
 }

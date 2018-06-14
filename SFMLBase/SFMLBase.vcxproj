@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ai.cpp" />
     <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameOverState.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="StatesMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ai.hpp" />
     <ClInclude Include="AssetsManager.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="GameLoop.hpp" />
