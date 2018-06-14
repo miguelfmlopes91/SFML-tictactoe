@@ -21,6 +21,7 @@ namespace Bardo {
 
 	private:
 		void InitGridPieces();
+		void CheckAndPlacePiece(); //checks if the area where the user clicks is occupied or not
 
 		GameDataRef _data;
 
@@ -30,7 +31,7 @@ namespace Bardo {
 
 		sf::Sprite _gridPieces[3][3];
 
-		int gridArray[3][3];
+		int _gridArray[3][3];
 
 		int turn;
 		int gameState;

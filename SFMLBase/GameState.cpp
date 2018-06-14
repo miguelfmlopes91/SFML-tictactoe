@@ -23,7 +23,7 @@ namespace Bardo {
 		this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 		this->_data->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
 		this->_data->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
-		this->_data->assets.LoadTexture("Circle Piece", O_PIECE_FILEPATH);
+		this->_data->assets.LoadTexture("O Piece", O_PIECE_FILEPATH);
 
 
 		_background.setTexture(this->_data->assets.GetTexture("Background"));
@@ -39,7 +39,7 @@ namespace Bardo {
 		{
 			for (int y = 0; y < 3; y++)
 			{
-				gridArray[x][y] = EMPTY_PIECE;
+				_gridArray[x][y] = EMPTY_PIECE;
 			}
 		}
 	}
@@ -58,7 +58,10 @@ namespace Bardo {
 			{
 				this->_data->machine.AddState(StateRef(new PauseState(_data)),false);
 				//this->_data->machine.AddState(StateRef(new GameOverState(_data)), true);
-
+			}
+			else if (this->_data->input.IsSpriteClicked(this->_gridSprite, sf::Mouse::Left, this->_data->window))
+			{
+				this->CheckAndPlacePiece();
 			}
 		}
 	}
@@ -100,6 +103,67 @@ namespace Bardo {
 					, _gridSprite.getPosition().y + (tempSpriteSize.y*y) - 7);
 				_gridPieces[x][y].setColor(sf::Color(255, 255, 255, 0));
 			}
+		}
+	}
+
+	void GameState::CheckAndPlacePiece()
+	{
+		sf::Vector2i touchPoint = this->_data->input.GetMousePosition(this->_data->window);
+		sf::FloatRect gridSize = _gridSprite.getGlobalBounds();
+		sf::Vector2f gapOutsideOfGrid = sf::Vector2f((SCREEN_WIDTH - gridSize.width) / 2, (SCREEN_HEIGHT - gridSize.height) / 2);
+
+		sf::Vector2f gridLocalTouchPos = sf::Vector2f(touchPoint.x - gapOutsideOfGrid.x, touchPoint.y - gapOutsideOfGrid.y);
+
+
+		sf::Vector2f gridSectionSize = sf::Vector2f(gridSize.width / 3, gridSize.height / 3);
+
+		int column, row;
+
+		if(gridLocalTouchPos.x<gridSectionSize.x)
+		{
+			column = 1;
+		}
+		else if (gridLocalTouchPos.x<gridSectionSize.x *2) 
+		{
+			column = 2;
+		}
+		else if (gridLocalTouchPos.x<gridSize.width)
+		{
+			column = 3;
+		}
+
+		if (gridLocalTouchPos.y<gridSectionSize.y)
+		{
+			row = 1;
+		}
+		else if (gridLocalTouchPos.y<gridSectionSize.y * 2)
+		{
+			row = 2;
+		}
+		else if (gridLocalTouchPos.y<gridSize.height)
+		{
+			row = 3;
+		}
+
+
+		if (_gridArray[column - 1][row - 1] == EMPTY_PIECE)
+		{
+			_gridArray[column - 1][row - 1] = turn;
+
+			if (PLAYER_PIECE == turn)
+			{
+				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("X Piece"));
+
+				turn = AI_PIECE;
+			}
+			else if (AI_PIECE == turn)
+			{
+				_gridPieces[column - 1][row - 1].setTexture(this->_data->assets.GetTexture("O Piece"));
+
+				turn = PLAYER_PIECE;
+			}
+
+			_gridPieces[column - 1][row - 1].setColor(sf::Color(255, 255, 255, 255));
 		}
 	}
 
